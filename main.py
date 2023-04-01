@@ -10,6 +10,10 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 
 @bot.command(name='random-topic')
 async def random_topic(ctx):
+    """
+    Bot generates and sends a random topic upon the command '!random-topic'.
+    :param ctx: channel where the command is sent.
+    """
 
     prompt = f'Please generate a random topic without asking it as a question and' \
              f' don\'t say anything else or even \'random topic about\''
@@ -42,8 +46,13 @@ async def random_topic(ctx):
     await ctx.send(f'{topic}{discussion}')
 
 
-@bot.command(name='random-sub-topic')
+@bot.command(name='random-subtopic')
 async def random_sub_topic(ctx, *args):
+    """
+    Bot generates and sends a list of 3 random subtopics given a topic upon the command '!random-subtopic <topic>'.
+    :param ctx: channel where the command was sent.
+    :param args: topic to take into consideration when generating subtopics.
+    """
     user_input = ' '.join(args)
     prompt = f'Please generate and list exactly 3 random subtopics about the following topic' \
              f' and don\'t say anything else or even \'random subtopic about\': {user_input}'
@@ -63,6 +72,9 @@ async def random_sub_topic(ctx, *args):
 
 @bot.event
 async def on_ready():
+    """
+    Bot declares that they're online when it gets active.
+    """
     # Loop through all servers the bot is in
     for guild in bot.guilds:
         # Loop through all channels in each server
@@ -79,6 +91,9 @@ async def on_ready():
 
 @bot.event
 async def on_disconnect():
+    """
+    Bot announces that they're going offline shortly before doing so.
+    """
     # Loop through all servers the bot is on
     for guild in bot.guilds:
         # Loop through all channels in each server
