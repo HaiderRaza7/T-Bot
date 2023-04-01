@@ -68,6 +68,18 @@ async def random_sub_topic(ctx, *args):
 
     topic = response.choices[0].text
     await ctx.send(topic)
+    
+
+@bot.command(name='random-recommendation')
+async def random_recommendation(ctx, *args):
+    """
+    Bot generates and sends a list of 3 recommendations given an example of something the user likes upon the command.
+    '!random-recommmendation <something the user likes>'
+    :param ctx: channel where the command was sent.
+    :param args: something the user likes. The bot has to generate recommendations relevant to this.
+    :return:
+    """
+    pass
 
 
 @bot.event
