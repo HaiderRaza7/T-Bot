@@ -41,7 +41,6 @@ python main.py <bot token> <openai API key>
 
 ## Authors
 
-Contributors names and contact info
 
 [@HaiderRaza7](https://github.com/HaiderRaza7)
 
@@ -58,9 +57,10 @@ Contributors names and contact info
 
 [//]: # (    * Initial Release)
 
-## License
+[//]: # (## License)
 
-This project is not currently licensed.
+[//]: # ()
+[//]: # (This project is not currently licensed.)
 
 [//]: # (This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details)
 
