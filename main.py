@@ -68,7 +68,18 @@ async def random_sub_topic(ctx, *args):
 
     topic = response.choices[0].text
     await ctx.send(topic)
-    
+
+
+@bot.command(name='random-trivia')
+async def random_trivia(ctx, *args):
+    """
+    Bot generates and sends a random trivia question based on the given topic upon the command '!random-trivia <topic>'
+    :param ctx: channel where the command was sent.
+    :param args: topic to take into consideration when generating subtopics.
+    """
+    # TODO: Implement
+    pass
+
 
 @bot.command(name='random-recommendation')
 async def random_recommendation(ctx, *args):
@@ -79,6 +90,7 @@ async def random_recommendation(ctx, *args):
     :param args: something the user likes. The bot has to generate recommendations relevant to this.
     :return:
     """
+    # TODO: Implement
     pass
 
 
