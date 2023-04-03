@@ -8,6 +8,15 @@ intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 
+@bot.before_invoke
+async def record_history(ctx):
+    """
+    Logs which channels are using the bot everytime a command is executed.
+    :param ctx: Context object.
+    """
+    print(f'A command was triggered in channel name {ctx.channel} with id {ctx.channel.id}!')
+
+
 @bot.command(name='random-topic')
 async def random_topic(ctx):
     """
@@ -141,7 +150,6 @@ async def random_recommendation(ctx, *args):
         temperature=0.5,
     )
     medium = response.choices[0].text
-    print(medium)
 
     prompt = f'Please generate a {medium} recommendation relevant to the following {medium} that isn\'t what I am ' \
              f'about to say and don\'t say anything else or even \'random subtopic about\': {user_input}'
@@ -172,6 +180,7 @@ async def on_ready():
             if channel.name == 'general':
                 try:
                     # Send a message to the channel
+                    print(f'Bot is now active in channel {channel.id}!')
                     await channel.send("I'm online!")
                 except discord.errors.Forbidden:
                     # If the bot does not have permission to send messages in the channel, catch the exception
