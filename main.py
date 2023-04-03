@@ -77,8 +77,21 @@ async def random_trivia(ctx, *args):
     :param ctx: channel where the command was sent.
     :param args: topic to take into consideration when generating the trivia question.
     """
-    # TODO: Implement
-    pass
+    user_input = ' '.join(args)
+    prompt = f'Please generate a random trivia question relevant to the following topic' \
+             f' and don\'t say anything else or even \'random subtopic about\': {user_input}'
+
+    response = openai.Completion.create(
+        engine=model,
+        prompt=prompt,
+        max_tokens=100,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+
+    topic = response.choices[0].text
+    await ctx.send(topic)
 
 
 @bot.command(name='random-joke')
@@ -88,8 +101,21 @@ async def random_joke(ctx, *args):
     :param ctx: channel where the command was sent.
     :param args: topic to take into consideration when generating the joke.
     """
-    # TODO: Implement
-    pass
+    user_input = ' '.join(args)
+    prompt = f'Please generate a random joke relevant to the following topic' \
+             f' and don\'t say anything else or even \'random subtopic about\': {user_input}'
+
+    response = openai.Completion.create(
+        engine=model,
+        prompt=prompt,
+        max_tokens=100,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+
+    topic = response.choices[0].text
+    await ctx.send(topic)
 
 
 @bot.command(name='random-recommendation')
@@ -101,8 +127,36 @@ async def random_recommendation(ctx, *args):
     :param args: something the user likes. The bot has to generate recommendations relevant to this.
     :return:
     """
-    # TODO: Implement
-    pass
+    user_input = ' '.join(args)
+    prompt = f'Please list the type of entertainment media or game'\
+             f' the following is most enjoyed in and nothing else at all:{user_input}. Your answer should usually be' \
+             f' 1 word. Your answer must be less than 4 words in total.'
+
+    response = openai.Completion.create(
+        engine=model,
+        prompt=prompt,
+        max_tokens=100,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+    medium = response.choices[0].text
+    print(medium)
+
+    prompt = f'Please generate a {medium} recommendation relevant to the following {medium} that isn\'t what I am ' \
+             f'about to say and don\'t say anything else or even \'random subtopic about\': {user_input}'
+
+    response = openai.Completion.create(
+        engine=model,
+        prompt=prompt,
+        max_tokens=100,
+        n=1,
+        stop=None,
+        temperature=0.5,
+    )
+
+    topic = response.choices[0].text
+    await ctx.send(topic)
 
 
 @bot.event
