@@ -75,7 +75,18 @@ async def random_trivia(ctx, *args):
     """
     Bot generates and sends a random trivia question based on the given topic upon the command '!random-trivia <topic>'
     :param ctx: channel where the command was sent.
-    :param args: topic to take into consideration when generating subtopics.
+    :param args: topic to take into consideration when generating the trivia question.
+    """
+    # TODO: Implement
+    pass
+
+
+@bot.command(name='random-joke')
+async def random_joke(ctx, *args):
+    """
+    Bot generates and sends a random joke based on the given topic upon the command '!random-joke <topic>'
+    :param ctx: channel where the command was sent.
+    :param args: topic to take into consideration when generating the joke.
     """
     # TODO: Implement
     pass
